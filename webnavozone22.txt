@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Page</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body{
+        background:#f5f5f5;
+    }
+
+    /* HEADER */
+    .header{
+        background:#f57224;
+        padding:15px 40px;
+        color:white;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+    }
+
+    .logo{
+        font-size:30px;
+        font-weight:bold;
+    }
+
+    .search-box{
+        width:50%;
+    }
+
+    .search-box input{
+        width:100%;
+        padding:10px;
+        border:none;
+        border-radius:5px;
+    }
+
+    /* PRODUCT SECTION */
+    .container{
+        width:90%;
+        margin:30px auto;
+        background:white;
+        padding:30px;
+        display:flex;
+        gap:40px;
+        border-radius:10px;
+        box-shadow:0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .product-image{
+        width:45%;
+    }
+
+    .product-image img{
+        width:100%;
+        border-radius:10px;
+    }
+
+    .small-images{
+        display:flex;
+        gap:10px;
+        margin-top:15px;
+    }
+
+    .small-images img{
+        width:70px;
+        border:1px solid #ccc;
+        padding:5px;
+        border-radius:5px;
+        cursor:pointer;
+    }
+
+    .product-details{
+        width:55%;
+    }
+
+    .product-title{
+        font-size:32px;
+        margin-bottom:15px;
+    }
+
+    .rating{
+        color:gold;
+        margin-bottom:15px;
+    }
+
+    .price{
+        font-size:40px;
+        color:#f57224;
+        margin-bottom:10px;
+    }
+
+    .old-price{
+        text-decoration:line-through;
+        color:gray;
+        margin-bottom:20px;
+    }
+
+    .features{
+        margin-bottom:20px;
+    }
+
+    .features li{
+        margin-bottom:10px;
+    }
+
+    .buttons{
+        display:flex;
+        gap:20px;
+    }
+
+    .buy-btn,
+    .cart-btn{
+        padding:15px 35px;
+        border:none;
+        font-size:18px;
+        border-radius:5px;
+        cursor:pointer;
+        color:white;
+    }
+
+    .buy-btn{
+        background:#2abbe8;
+    }
+
+    .cart-btn{
+        background:#f57224;
+    }
+
+    .buy-btn:hover{
+        background:#169ac2;
+    }
+
+    .cart-btn:hover{
+        background:#d95c14;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="logo">Daraz</div>
+
+    <div class="search-box">
+        <input type="text" placeholder="Search products...">
+    </div>
+</div>
+
+<!-- PRODUCT SECTION -->
+<div class="container">
+
+    <!-- LEFT SIDE -->
+    <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1510557880182-3f8c1cdb7f2d?q=80&w=1000&auto=format&fit=crop" alt="Kettle">
+
+        <div class="small-images">
+            <img src="https://images.unsplash.com/photo-1510557880182-3f8c1cdb7f2d?q=80&w=1000&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=1000&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?q=80&w=1000&auto=format&fit=crop">
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="product-details">
+
+        <h1 class="product-title">
+            Electric Glass Kettle 2.0L
+        </h1>
+
+        <div class="rating">
+            ★★★★★ (32 Ratings)
+        </div>
+
+        <div class="price">
+            Rs. 3,710
+        </div>
+
+        <div class="old-price">
+            Rs. 5,750
+        </div>
+
+        <ul class="features">
+            <li>✔ Borosilicate Glass</li>
+            <li>✔ Auto Turn Off</li>
+            <li>✔ BPA Free</li>
+            <li>✔ 1500W Power</li>
+            <li>✔ 360° Swivel Base</li>
+        </ul>
+
+        <div class="buttons">
+            <button class="buy-btn">Buy Now</button>
+            <button class="cart-btn">Add to Cart</button>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

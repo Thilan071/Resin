@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jewelry Collection - NAVO ZONE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f8ff;
+}
+
+/* HEADER (MAIN STYLE) */
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 60px;
+    background:#d7e9ff;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo img{
+    width:150px;
+}
+
+nav a{
+    margin:0 15px;
+    text-decoration:none;
+    color:black;
+    font-weight:500;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#4a90e2;
+}
+
+.search input{
+    padding:8px;
+    border:none;
+    border-radius:5px;
+    outline:none;
+}
+
+.search button{
+    padding:8px 14px;
+    border:none;
+    background:white;
+    color:#4a90e2;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:5px;
+}
+    /* PRODUCT SECTION */
+    .container{
+        width:90%;
+        margin:30px auto;
+        background:white;
+        padding:30px;
+        display:flex;
+        gap:40px;
+        border-radius:10px;
+        box-shadow:0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .left-side{
+    width:45%;
+}
+
+.main-image{
+    width:75%;
+    border-radius:10px;
+    overflow:hidden;
+    position:relative;
+}
+
+#mainImage{
+    transition:0.3s ease;
+}
+
+.main-image img{
+    width:75%;
+    transition:0.3s;
+}
+
+/* POPUP EFFECT */
+.main-image:hover img{
+    transform:scale(1.15);
+}
+
+.thumbnail-container{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+.thumbnail{
+    width:70px;
+    height:70px;
+    border:2px solid #ddd;
+    border-radius:8px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.thumbnail img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.thumbnail:hover{
+    border-color:orange;
+    transform:scale(1.05);
+}
+
+
+    .product-details{
+        width:55%;
+    }
+
+    .product-title{
+        font-size:32px;
+        margin-bottom:15px;
+    }
+	
+	.description{
+	font-size:12px;
+        margin-bottom:15px;
+		}
+	
+
+    .rating{
+        color:gold;
+        margin-bottom:15px;
+    }
+
+    .price{
+        font-size:40px;
+        color:#f57224;
+        margin-bottom:10px;
+    }
+
+    .old-price{
+        text-decoration:line-through;
+        color:gray;
+        margin-bottom:20px;
+    }
+
+    .features{
+        margin-bottom:20px;
+    }
+
+    .features li{
+        margin-bottom:10px;
+    }
+
+    .buttons{
+        display:flex;
+        gap:20px;
+    }
+
+    .buy-btn,
+    .cart-btn{
+        padding:15px 35px;
+        border:none;
+        font-size:18px;
+        border-radius:5px;
+        cursor:pointer;
+        color:white;
+    }
+
+    .buy-btn{
+        background:#2abbe8;
+    }
+
+    .cart-btn{
+        background:#f57224;
+    }
+
+    .buy-btn:hover{
+        background:#169ac2;
+    }
+
+    .cart-btn:hover{
+        background:#d95c14;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+    <img src="mylogonavozone - Copy.png">
+</div>
+
+<div class="search">
+<input type="text" placeholder="Search products">
+<button>Search</button>
+</div>
+
+<nav>
+<a href="main page navozone.html">Home</a>
+<a href="main page navozone.html#products">Products</a>
+<a href="main page navozone.html#collections">Collections</a>
+<a href="main page navozone.html#about">About</a>
+<a href="main page navozone.html#contact">Contact</a>
+<a href="#" onclick="openSignup()">Sign Up</a>
+</nav>
+
+</header>
+
+
+<!-- PRODUCT SECTION -->
+<div class="container">
+
+    <!-- LEFT -->
+    <div class="left-side">
+
+        <div class="main-image">
+            <img id="bigImage" src="key01.png" alt="">
+        </div>
+
+        <!-- SMALL IMAGES -->
+        <div class="thumbnail-container">
+
+            <div class="thumbnail">
+                <img src="key02.png" onclick="changeImage(this.src)">
+            </div>
+
+            <div class="thumbnail">
+                <img src="key04.png" onclick="changeImage(this.src)">
+            </div>
+
+            <div class="thumbnail">
+                <img src="key05.png" onclick="changeImage(this.src)">
+            </div>
+
+            <div class="thumbnail">
+                <img src="key06.png" onclick="changeImage(this.src)">
+            </div>
+
+        </div>
+		
+		<script>
+function changeImage(src){
+    document.getElementById("bigImage").src = src;
+}
+</script>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="product-details">
+
+        <h1 class="product-title">
+            Resin Keychain – Handmade Design
+        </h1>
+		
+		<h2 class="description">
+		    Handmade resin keychains crafted with high-quality, durable resin. Each piece is unique, stylish, and lightweight, making it perfect for keys, bags, or gifting. A simple yet elegant accessory that adds a personal touch to your everyday style.
+		</h2>
+
+        <div class="rating">
+            ★★★★★ (32 Ratings)
+        </div>
+
+        <div class="price">
+            Rs. 200 
+        </div>
+
+        <div class="old-price">
+            Rs. 320
+        </div>
+
+        <ul class="features">
+            <li>✔ Handmade Resin Design</li>
+            <li>✔ Lightweight & Durable</li>
+            <li>✔ Unique Artistic Finish</li>
+            <li>✔ Perfect for Keys & Bags</li>
+            <li>✔ Customizable Designs Available</li>
+        </ul>
+
+        <div class="buttons">
+		    <a href="buynow.html">
+            <button class="buy-btn">Buy Now</button>
+			</a>
+            <<a href="addtocartpage.html">
+            <button class="cart-btn">Add to Cart</button>
+			</a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

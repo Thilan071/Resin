@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAVO ZONE</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#f4f8ff}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit}
+
+/* HEADER */
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 60px;background:#d7e9ff;position:sticky;top:0;z-index:1000;gap:15px}
+.logo img{width:150px;cursor:pointer}
+nav{display:flex;align-items:center}
+nav a{margin:0 15px;color:black;font-weight:500;transition:.3s;cursor:pointer}
+nav a:hover{color:#4a90e2}
+.search{display:flex;gap:8px}
+.search input{padding:8px;border:none;border-radius:5px;outline:none;width:200px}
+.search button{padding:8px 14px;border:none;background:white;color:#4a90e2;font-weight:bold;cursor:pointer;border-radius:5px}
+.cart-icon{position:relative;cursor:pointer}
+.cart-img{width:28px;height:28px;transition:.3s}
+.cart-img:hover{transform:scale(1.1)}
+#cartCount{position:absolute;top:-8px;right:-10px;background:red;color:white;font-size:12px;width:18px;height:18px;display:flex;align-items:center;justify-content:center;border-radius:50%;font-weight:bold}
+
+/* SLIDER */
+.slider{position:relative;max-width:900px;margin:20px auto;overflow:hidden;border-radius:10px}
+.slides{display:flex;width:300%;transition:.5s}
+.slides img{width:33.3333%;height:auto}
+.btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);color:white;border:none;padding:10px 15px;cursor:pointer;font-size:20px}
+.next{right:10px}.prev{left:10px}
+
+/* HOME */
+.featured{padding:60px;text-align:center}
+.featured h2{font-size:35px;margin-bottom:40px}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:30px}
+.product{background:white;padding:15px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.1);transition:.3s;cursor:pointer}
+.product:hover{transform:translateY(-5px);box-shadow:0 6px 20px rgba(74,144,226,.2)}
+.product img{width:100%;height:180px;object-fit:cover;border-radius:10px}
+.product h4{margin:10px 0 5px}
+.product p{font-weight:bold;color:#555}
+.collections{padding:70px;text-align:center;background:#fff}
+.collection-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;margin-top:40px}
+.collection-card{background:#eaf3ff;padding:40px 20px;border-radius:15px;transition:.3s;cursor:pointer}
+.collection-card:hover{transform:translateY(-5px);background:#d7e9ff}
+.collection-card h3{margin-bottom:10px}
+.sale{background:#d7e9ff;padding:60px;text-align:center}
+.offer-box{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
+.offer-box img{width:180px;border-radius:15px}
+.offer-text h2{font-size:32px;margin-bottom:10px}
+.offer-text p{font-size:18px;margin-bottom:15px}
+.pill{padding:10px 25px;background:#4a90e2;border:none;color:white;border-radius:25px;cursor:pointer;font-size:16px}
+.pill:hover{background:#2f6fb7}
+.about-section{padding:80px 60px 20px;background:#fff}
+.about-container{display:flex;align-items:center;justify-content:space-between;gap:50px;flex-wrap:wrap}
+.about-text{flex:1;min-width:280px}
+.about-text h2{font-size:40px;margin-bottom:20px}
+.about-text p{font-size:17px;line-height:1.8;color:#555;margin-bottom:25px}
+.video-box{flex:1;min-width:280px}
+.video-box video{width:100%;border-radius:12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;padding:60px 0}
+.card{background:white;padding:20px;border-radius:12px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.1);transition:.3s}
+.card:hover{transform:translateY(-5px)}
+.card img{width:100%;border-radius:10px;margin-bottom:15px}
+.contact-section{background:#eaf3ff}
+.contact-container{display:flex;justify-content:space-between;align-items:flex-start;gap:50px;padding:60px;flex-wrap:wrap}
+.contact-left,.contact-right{flex:1;min-width:260px}
+.contact-left h2{font-size:50px;margin-bottom:20px}
+.contact-left p{font-size:20px;margin-bottom:15px;line-height:1.6}
+.contact-left h3,.contact-right h3{font-size:35px;margin:25px 0 20px}
+.contact-right{text-align:center}
+.icon-img{width:18px;height:18px;margin-right:8px;vertical-align:middle}
+.social-icons{display:flex;justify-content:center;gap:20px;margin-bottom:40px}
+.social-icons img{width:60px;height:60px;background:white;padding:10px;border-radius:50%;box-shadow:0 5px 15px rgba(0,0,0,.1);transition:.3s}
+.social-icons img:hover{transform:translateY(-6px)}
+.payment-small h4{font-size:25px;margin-bottom:20px}
+.payment-icons{display:flex;justify-content:center;gap:15px;flex-wrap:wrap}
+.payment-icons img{width:55px;height:55px;object-fit:contain;background:white;padding:8px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,.1)}
+.payment-card-small p{font-size:12px;margin-top:6px}
+
+/* COLLECTION PAGES */
+.hero{height:300px;background:#bcd9ff center/cover;display:flex;justify-content:center;align-items:center}
+.hero h1{background:rgba(255,255,255,.7);padding:20px 40px;border-radius:10px;font-size:44px;text-align:center}
+.products{padding:70px 8%}
+.products h2{text-align:center;margin-bottom:50px;font-size:40px}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px}
+.ccard{background:white;border-radius:15px;overflow:hidden;transition:.3s;box-shadow:0 5px 15px rgba(0,0,0,.1)}
+.ccard:hover{transform:translateY(-8px);box-shadow:0 6px 20px rgba(74,144,226,.2)}
+.ccard img{width:100%;height:260px;object-fit:cover}
+.ccard-content{padding:20px;text-align:center}
+.cprice{color:#4a90e2;font-size:22px;font-weight:bold;margin:10px 0}
+.blue-btn{background:#4a90e2;color:white;border:none;padding:10px 25px;border-radius:30px;cursor:pointer;font-size:16px}
+.blue-btn:hover{background:#2f6fb7}
+
+/* PRODUCT PAGE */
+.container{width:90%;margin:30px auto;background:white;padding:30px;display:flex;gap:40px;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,.1);flex-wrap:wrap}
+.left-side{flex:1;min-width:280px}
+.main-image{border-radius:10px;overflow:hidden}
+.main-image img{width:100%;max-width:420px;transition:.3s;display:block}
+.main-image:hover img{transform:scale(1.12)}
+.thumbnail-container{display:flex;gap:10px;margin-top:15px;flex-wrap:wrap}
+.thumbnail{width:70px;height:70px;border:2px solid #ddd;border-radius:8px;overflow:hidden;cursor:pointer;transition:.3s}
+.thumbnail img{width:100%;height:100%;object-fit:cover}
+.thumbnail:hover,.thumbnail.active{border-color:orange;transform:scale(1.05)}
+.product-details{flex:1.2;min-width:280px}
+.product-title{font-size:30px;margin-bottom:15px}
+.description{font-size:13px;font-weight:400;margin-bottom:15px;line-height:1.6}
+.rating{color:gold;margin-bottom:15px}
+.price{font-size:32px;color:#f57224;margin-bottom:10px}
+.price p{font-size:12px;color:black}
+.old-price{text-decoration:line-through;color:gray;margin-bottom:20px}
+.features{margin-bottom:20px;list-style:none}
+.features li{margin-bottom:10px}
+.buttons{display:flex;gap:20px;flex-wrap:wrap}
+.buy-btn,.cart-btn{padding:15px 35px;border:none;font-size:18px;border-radius:5px;cursor:pointer;color:white}
+.buy-btn{background:#2abbe8}.cart-btn{background:#f57224}
+.buy-btn:hover{background:#169ac2}.cart-btn:hover{background:#d95c14}
+
+/* CART */
+.cart-section{padding:40px 8%}
+.cart-container{display:flex;gap:25px;flex-wrap:wrap}
+.cart-items{flex:2;min-width:300px;background:white;padding:25px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.cart-title,.cart-summary h2{margin-bottom:25px;color:#192bc2}
+.cart-item{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 0;border-bottom:1px solid #ddd;flex-wrap:wrap}
+.product-info{display:flex;align-items:center;gap:20px}
+.product-info img{width:100px;height:100px;object-fit:cover;border-radius:10px}
+.product-info h3{margin-bottom:8px}
+.product-price{color:#192bc2;font-weight:bold;font-size:20px}
+.quantity{display:flex;align-items:center;gap:10px}
+.quantity button{width:35px;height:35px;border:none;background:#2ba6df;color:white;font-size:18px;border-radius:5px;cursor:pointer}
+.quantity span{font-size:18px;font-weight:bold}
+.remove-btn{background:none;border:none;color:red;font-size:22px;cursor:pointer}
+.cart-summary{flex:1;min-width:260px;background:white;padding:25px;border-radius:12px;height:fit-content;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.summary-row{display:flex;justify-content:space-between;margin:15px 0;font-size:17px}
+.total{font-size:22px;font-weight:bold;color:#192bc2}
+.checkout-btn{width:100%;padding:15px;background:#2ba6df;color:white;border:none;border-radius:8px;font-size:17px;cursor:pointer;margin-top:20px}
+.checkout-btn:hover{background:#1c8fc4}
+.whatsapp-btn{display:block;text-align:center;background:#25D366;color:white;padding:15px;margin-top:15px;border-radius:8px;font-weight:bold}
+.empty{text-align:center;padding:40px;color:#666}
+
+/* CHECKOUT */
+.checkout-container{max-width:1400px;margin:40px auto;display:flex;gap:30px;padding:0 20px;flex-wrap:wrap}
+.delivery-info{flex:2;min-width:300px;background:#fff;padding:35px;border-radius:10px}
+.delivery-info h2{margin-bottom:30px}
+.form-row{display:flex;gap:20px;margin-bottom:20px;flex-wrap:wrap}
+.form-group{flex:1;min-width:200px}
+label{display:block;margin-bottom:8px;font-weight:500}
+.delivery-info input,.delivery-info select,.delivery-info textarea,.promo input{width:100%;padding:14px;border:1px solid #ddd;border-radius:5px;font-size:15px}
+textarea{resize:none;height:100px}
+.label-buttons{display:flex;gap:20px;margin:15px 0 30px}
+.label-btn{padding:15px 35px;border:2px solid #ddd;background:white;border-radius:8px;cursor:pointer}
+.label-btn:hover,.label-btn.sel{border-color:#ff6600}
+.payment-method h3{margin-bottom:15px}
+.payment-grid{display:flex;gap:15px;flex-wrap:wrap}
+.payment-card{border:2px solid #ddd;padding:15px;border-radius:8px;text-align:center;width:120px;cursor:pointer}
+.payment-card:hover,.payment-card.sel{border-color:#ff6600}
+.payment-card img{width:45px;height:45px;object-fit:contain}
+.payment-card p{font-size:12px;margin-top:8px}
+.order-summary{flex:1;min-width:260px;background:white;padding:30px;border-radius:10px;height:fit-content}
+.order-summary h2{margin-bottom:25px}
+.promo{display:flex;margin-bottom:30px}
+.promo input{border-radius:5px 0 0 5px}
+.apply-btn{background:#2ba6df;color:white;border:none;padding:0 20px;border-radius:0 5px 5px 0;cursor:pointer}
+.summary-item{display:flex;justify-content:space-between;margin:15px 0;gap:10px}
+.summary-item.total{font-size:26px;color:#2ba6df}
+.pay-btn{width:100%;background:#2ba6df;color:white;border:none;padding:16px;border-radius:5px;font-size:18px;cursor:pointer;margin-top:20px}
+.pay-btn:hover{background:#1c8fc4}
+.err{color:#d33;font-size:13px;margin-top:10px;min-height:18px}
+
+footer{background:#d7e9ff;text-align:center;padding:20px;margin-top:40px}
+
+/* SIGNUP */
+.signup-popup{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;justify-content:center;align-items:center;z-index:2000}
+.signup-card{width:380px;max-width:92%;background:white;padding:40px;border-radius:20px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.signup-card h2{margin-bottom:25px;font-size:34px}
+.signup-card input{width:100%;padding:14px;margin-bottom:18px;border:1px solid #ccc;border-radius:8px;font-size:15px;outline:none}
+.signup-card input:focus{border:2px solid #5c5686}
+.signup-btn{width:100%;padding:14px;background:#4a90e2;color:white;border:none;border-radius:8px;font-size:16px;cursor:pointer}
+.signup-btn:hover{background:#2f6fb7}
+.signup-card p{margin-top:18px;cursor:pointer;color:#555}
+.close-btn{float:right;font-size:28px;cursor:pointer}
+
+@media(max-width:900px){
+ header{flex-direction:column;padding:20px}
+ nav{flex-wrap:wrap;justify-content:center}
+ .featured,.collections,.about-section,.contact-container{padding:40px 20px}
+ .hero h1{font-size:28px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><img src="mylogonavozone - Copy.png" alt="NAVO ZONE" onclick="go('home')"></div>
+  <div class="search">
+    <input type="text" id="searchBox" placeholder="Search products" onkeydown="if(event.key==='Enter')doSearch()">
+    <button onclick="doSearch()">Search</button>
+  </div>
+  <div class="cart-icon" onclick="go('cart')">
+    <img src="icons8-shopping-cart-48.png" alt="Cart" class="cart-img">
+    <span id="cartCount">0</span>
+  </div>
+  <nav>
+    <a onclick="goSection('home')">Home</a>
+    <a onclick="goSection('products')">Products</a>
+    <a onclick="goSection('collections')">Collections</a>
+    <a onclick="goSection('about')">About</a>
+    <a onclick="goSection('contact')">Contact</a>
+    <a onclick="openSignup()">Sign Up</a>
+  </nav>
+</header>
+
+<main id="app"></main>
+
+<footer><p>© 2026 NAVO ZONE | Handmade Resin Jewelry</p></footer>
+
+<div class="signup-popup" id="signupBox">
+  <div class="signup-card">
+    <span class="close-btn" onclick="closeSignup()">×</span>
+    <h2>Sign Up</h2>
+    <input type="text" placeholder="User Name">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button class="signup-btn" onclick="closeSignup()">Sign Up</button>
+    <p onclick="closeSignup()">← Back to Home</p>
+  </div>
+</div>
+
+<script>
+/* ================= DATA ================= */
+const WHATSAPP = "94766638084";
+const DELIVERY_FEE = 350;
+
+// Main products (home page + product detail pages)
+const PRODUCTS = {
+  keychain:{name:"Resin Keychain",home:"resinkeytag001.png",
+    title:"Resin Keychain – Handmade Design",
+    desc:"Handmade resin keychains crafted with high-quality, durable resin. Each piece is unique, stylish, and lightweight, making it perfect for keys, bags, or gifting. A simple yet elegant accessory that adds a personal touch to your everyday style.",
+    imgs:["key01.png","key02.png","key04.png","key05.png","key06.png"],
+    price:200,priceText:"Rs. 200",oldText:"Rs. 320",ratings:32,
+    features:["Handmade Resin Design","Lightweight & Durable","Unique Artistic Finish","Perfect for Keys & Bags","Customizable Designs Available"]},
+  jewelryset:{name:"Resin Jewelry Set",home:"juwelerysrt.jpeg",
+    title:"Resin Jewelry Set – Handmade Design",
+    desc:"Handmade resin jewelry set crafted with premium-quality resin and elegant floral designs. Each set is unique, lightweight, and beautifully finished, making it perfect for special occasions, daily wear, or gifting. A stylish and artistic accessory set that adds charm and elegance to your look.",
+    imgs:["resinjeweleryser008.png","resinjeweleryser007.png","resinjeweleryser006.png"],
+    price:490,priceText:"Rs. 490",oldText:"Rs. 520",ratings:32,
+    features:["Handmade Resin Design","Lightweight & Durable","Unique Artistic Finish","Elegant Floral Designs","Customizable Designs Available"]},
+  nameboard:{name:"Name Board",home:"namebord.jpeg",
+    title:"Resin Name Board – Handmade Design",
+    desc:"Handmade resin name boards crafted with premium-quality resin for a stylish and elegant look. Each name board is uniquely designed with beautiful details, making it perfect for home décor, room decoration, office spaces, or gifting. Durable, customizable, and eye-catching, these resin name boards add a personal and creative touch to any space.",
+    imgs:["namebord0004.png","namebord0003.png","namebord0001.png","namebord0005.png"],
+    price:390,priceText:"Rs.390 - Rs.1600",oldText:"Rs.420 - Rs.1680",ratings:25,
+    features:["Handmade Resin Design","Lightweight & Durable","Unique Artistic Finish","Perfect for Home & Office Décor","Customizable Designs Available"]},
+  giftset:{name:"Gift Set",home:"giftset.jpeg",
+    title:"Resin Gift Set – Handmade Collection",
+    desc:"Beautiful handmade resin gift sets crafted with premium-quality resin to create meaningful and elegant gifts for every special occasion. Each set is carefully designed with aesthetic details, making it perfect for birthdays, anniversaries, surprises, and memorable moments.",
+    imgs:["giftset001.png","giftset002.png","giftset003.png","giftset004.png"],
+    price:2190,priceText:"Rs.2190",oldText:"Rs.2490",ratings:25,
+    features:["Handmade Premium Resin Products","Elegant & Aesthetic Gift Packaging","Perfect for Special Occasions","Unique & Customizable Designs"]},
+  flower:{name:"Flower Preservation",home:"ressn flower pre001.png",
+    title:"Flower Preservation – Handmade Resin Memories",
+    desc:"Preserve your most precious flowers forever with our premium handmade resin flower preservation designs. Perfect for wedding bouquets, proposal flowers, anniversary flowers, graduation memories, and special moments that deserve to last a lifetime.",
+    imgs:["flowerpre003.png","flowerpre001.png","flowerpre002.png","flowerpre004.png"],
+    price:4290,priceText:"Rs.4,290 – Rs.15,000+",priceNote:"(Price depends on size, flower type & custom design)",oldText:"Rs.4,500 - Rs.16,000+",ratings:25,
+    features:["Handmade Resin Design","Real Flower Preservation","Premium Crystal-Clear Resin Finish","Fully Customizable Designs","Perfect for Weddings & Special Gifts"]},
+  clock:{name:"Clock",home:"resin clock001.png",
+    title:"Resin Clock – Handmade Wall Clock",
+    desc:"Unique handmade resin wall clock with artistic designs. A beautiful decorative piece that adds colour and character to your living space.",
+    imgs:["resin clock001.png"],
+    price:2800,priceText:"Rs.2800",oldText:"",ratings:25,
+    features:["Handmade Resin Design","Artistic Finish","Perfect for Home Décor","Customizable Designs Available"]},
+  bangle:{name:"Bangle",home:"ressn bangle001.png",
+    title:"Resin Bangle – Handmade Stylish Jewelry",
+    desc:"Handmade resin bangles in trendy, elegant designs. Lightweight, comfortable and perfect for everyday wear or gifting.",
+    imgs:["ressn bangle001.png"],
+    price:350,priceText:"Rs.350",oldText:"",ratings:25,
+    features:["Handmade Premium Resin Design","Lightweight & Comfortable","Stylish Artistic Finish","Perfect for Gifts"]},
+  pendant:{name:"Rose petal pendant",home:"pendent001.png",
+    title:"Rose Petal Pendant – Handmade Resin Jewelry",
+    desc:"Elegant handmade rose petal pendants made with real preserved petals and premium resin. Lightweight, stylish, and perfect for gifts, memories, or everyday wear. Each pendant is uniquely crafted to add a romantic and aesthetic touch to your style.",
+    imgs:["rosependant002.png","rosependant001.png","rosependant004.png","rosependant003.png"],
+    price:95,priceText:"Rs.95 – Rs.500+",priceNote:"(Price depends on size, design & customization)",oldText:"Rs.120 - Rs.600+",ratings:25,
+    features:["Real Rose Petal Preservation","Premium Crystal-Clear Resin Finish","Lightweight & Comfortable to Wear","Durable & Long-Lasting Quality","Perfect for Gifts & Special Memories"]},
+  earrings:{name:"Resin Earrings",home:"resinearings001.png",
+    title:"Resin Earrings – Handmade Fashion Jewelry",
+    desc:"Elegant handmade resin earrings crafted with premium-quality resin for a stylish and aesthetic look. Lightweight, unique, and comfortable to wear, these earrings are perfect for casual wear, parties, gifts, and everyday fashion.",
+    imgs:["resinearings005.png","resinearings002.png","resinearings003.png","resinearings004.png"],
+    price:100,priceText:"Rs.100 – Rs.300+",priceNote:"(Price depends on size, design & customization)",oldText:"Rs.120 - Rs.350+",ratings:25,
+    features:["Premium Handmade Resin Design","Lightweight & Comfortable to Wear","Elegant & Trendy Artistic Finish","Durable High-Quality Resin Material","Perfect for Gifts & Everyday Fashion"]},
+  bracelet:{name:"Resin Bracelet",home:"resinbracelate001.png",
+    title:"Resin Bracelet – Handmade Stylish Jewelry",
+    desc:"Beautiful handmade resin bracelets crafted with premium-quality resin for a trendy and elegant look. Lightweight, comfortable, and uniquely designed, these bracelets are perfect for everyday wear, gifts, and fashion lovers who enjoy aesthetic handmade accessories.",
+    imgs:["resinbracelate001.png","resinbracelate002.png","resinbracelate003.png","resinbracelate004.png"],
+    price:395,priceText:"Rs.395 – Rs.2,000+",priceNote:"(Price depends on design & customization)",oldText:"Rs.120 - Rs.350+",ratings:25,
+    features:["Handmade Premium Resin Design","Lightweight & Comfortable to Wear","Stylish & Trendy Artistic Finish","Durable High-Quality Material","Perfect for Gifts & Everyday Fashion"]},
+  pen:{name:"Resin Pen",home:"resin pen001.png",
+    title:"Resin Pens – Handmade Aesthetic Writing Accessories",
+    desc:"Elegant handmade resin pens with a stylish, artistic look for your everyday writing. Each pen is uniquely designed with colors, glitter, flowers, or custom names, making it truly one-of-a-kind. Perfect for personal use, gifts, or special occasions.",
+    imgs:["resinpen001.png","resinpen004.png","resinpen002.png","resinpen003.png"],
+    price:250,priceText:"Rs.250 – Rs.800+",priceNote:"(Price depends on design, customization & packaging)",oldText:"Rs.300 - Rs.950+",ratings:25,
+    features:["Premium Handmade Resin Craft Design","Smooth & Comfortable Writing Experience","Lightweight & Easy to Use Daily","Durable High-Quality Material","Perfect for Gifts, Office & Personal Use"]},
+  bookmark:{name:"Resin Bookmark",home:"resin bookmark003.png",
+    title:"Resin Bookmarks – Handmade Aesthetic Reading Accessories",
+    desc:"Beautiful handmade resin bookmarks designed to add elegance to your reading experience. Each bookmark is uniquely crafted with vibrant colors, glitter, dried flowers, charms, or custom names, making every piece one-of-a-kind.",
+    imgs:["bookmark001.png","bookmark002.png","bookmark003.png","bookmark004.png"],
+    price:250,priceText:"Rs.250 – Rs.800+",priceNote:"(Price depends on design, customization & packaging)",oldText:"Rs.300 – Rs.950+",ratings:25,
+    features:["Premium Handmade Resin Craft Design","Lightweight & Durable for Everyday Use","Customizable with Names, Flowers & Glitter","Unique Aesthetic Accessory for Book Lovers","Perfect for Gifts, Students & Personal Collections"]}
+};
+
+// Collection pages
+const COLLECTIONS = {
+  jewelry:{title:"Jewelry Collection",sub:"Our Resin Jewelry",items:[
+    {id:"j1",img:"jewelerycollection01.png",name:"Resin Earrings",desc:"Handmade aesthetic earrings",price:1200},
+    {id:"j2",img:"jewelerycollection02.png",name:"Resin Necklace",desc:"Modern handmade necklace",price:1800},
+    {id:"j3",img:"jewelerycollection03.png",name:"Resin Bracelet",desc:"Premium quality bracelet",price:1500},
+    {id:"j4",img:"jewelerycollection04.png",name:"Flower Pendant",desc:"Beautiful resin pendant",price:2000}]},
+  gift:{title:"Gift Collection",sub:"Our Resin Gift Collection",items:[
+    {id:"g1",img:"personalized keytag.png",name:"Personalized Resin Keychain",desc:"Custom-made resin keychain with names and initials.",price:800},
+    {id:"g2",img:"photostatue.png",name:"Custom Couple Photo Statue",desc:"Turn your favorite couple photo into a beautiful handmade resin statue.",price:3200},
+    {id:"g3",img:"vehicle art.png",name:"Customized Vehicle Art",desc:"Your favorite car preserved in a handmade resin artwork.",price:12000},
+    {id:"g4",img:"giftboxx.png",name:"Resin Gift Box Set",desc:"Premium resin gift set perfect for special occasions.",price:1500}]},
+  decor:{title:"Home Decor Collection",sub:"Our Home Decoration",items:[
+    {id:"d1",img:"wallart.png",name:"Resin Wall Art",desc:"Modern handmade wall decoration for your living space.",price:4000},
+    {id:"d2",img:"clock.png",name:"Resin Clock",desc:"Unique resin wall clock with artistic designs.",price:4500},
+    {id:"d3",img:"Decorative Bowl.png",name:"Resin Decorative Bowl",desc:"Beautiful decorative bowl for home styling.",price:2600},
+    {id:"d4",img:"nameframe.png",name:"Personalized Resin Name Frame",desc:"Custom handmade resin name frame with preserved leaves and LED lighting.",price:3800}]},
+  flowers:{title:"Flower Preservation Collection",sub:"Our Flower Preservations",items:[
+    {id:"f1",img:"flowepre001.png",name:"Customized Resin Floral Letter",desc:"Personalized resin letter with preserved flowers.",price:3000},
+    {id:"f2",img:"flowerlamp001.png",name:"Resin Flower Lamp",desc:"Handmade LED lamp with preserved flowers.",price:4300},
+    {id:"f3",img:"flowerpre001.png",name:"Flower Preservation Heart Frame",desc:"Heart-shaped resin artwork with preserved flowers.",price:4600},
+    {id:"f4",img:"cuterosegift.png",name:"Cute Rose Memory Gift",desc:"Real preserved rose encased in crystal-clear resin.",price:1200}]}
+};
+const COLLECTION_HOME = [
+  ["jewelry","Jewelry Collection","Earrings, bangles & pendants"],
+  ["gift","Gift Collection","Special handmade resin gifts"],
+  ["decor","Home Decor","Modern resin decorations"],
+  ["flowers","Flower Preservation","Beautiful preserved memories"]];
+
+const PAYMENTS = [
+  ["Cash on Delivery","https://cdn-icons-png.flaticon.com/512/2331/2331941.png"],
+  ["Visa","https://cdn-icons-png.flaticon.com/512/196/196578.png"],
+  ["MasterCard","https://cdn-icons-png.flaticon.com/512/196/196561.png"],
+  ["Bank Transfer","banktransfer.png"],
+  ["Koko Payment","kokoopayy.jpeg"]];
+
+const PROVINCES = ["Western","Central","Southern","Northern","Eastern","North Western","North Central","Uva","Sabaragamuwa"];
+const DISTRICTS = ["Colombo","Gampaha","Kalutara","Kandy","Matale","Nuwara Eliya","Galle","Matara","Hambantota","Jaffna","Kilinochchi","Mannar","Vavuniya","Mullaitivu","Batticaloa","Ampara","Trincomalee","Kurunegala","Puttalam","Anuradhapura","Polonnaruwa","Badulla","Monaragala","Ratnapura","Kegalle"];
+
+/* ================= CART STATE ================= */
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem("navoCart")) || []; } catch(e){ cart = []; }
+let checkoutItems = null;   // used for "Buy Now"
+let selectedPay = "", selectedType = "";
+
+const rs = n => "Rs. " + n.toLocaleString("en-US");
+function saveCart(){ try{localStorage.setItem("navoCart",JSON.stringify(cart));}catch(e){} updateBadge(); }
+function updateBadge(){ document.getElementById("cartCount").textContent = cart.reduce((s,i)=>s+i.qty,0); }
+
+function productAsItem(id){
+  const p = PRODUCTS[id];
+  return {id, name:p.name, img:p.imgs[0], price:p.price, qty:1};
+}
+function collectionItem(cid,iid){
+  const it = COLLECTIONS[cid].items.find(x=>x.id===iid);
+  return {id:it.id, name:it.name, img:it.img, price:it.price, qty:1};
+}
+function addToCart(item, thenGo){
+  const ex = cart.find(c=>c.id===item.id);
+  if(ex) ex.qty++; else cart.push(item);
+  saveCart();
+  if(thenGo) go("cart"); else toast("Added to cart ✓");
+}
+function buyNow(item){ checkoutItems=[item]; go("checkout"); }
+
+function toast(msg){
+  const t=document.createElement("div");
+  t.textContent=msg;
+  t.style.cssText="position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#192bc2;color:white;padding:12px 25px;border-radius:30px;z-index:3000";
+  document.body.appendChild(t); setTimeout(()=>t.remove(),1500);
+}
+
+/* ================= ROUTER ================= */
+function go(route){ location.hash = "#/" + route; }
+function goSection(id){
+  if(!(location.hash===""||location.hash==="#/home")){ go("home"); setTimeout(()=>scrollToId(id),60); }
+  else scrollToId(id);
+}
+function scrollToId(id){
+  const el=document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:"smooth"}); else window.scrollTo({top:0,behavior:"smooth"});
+}
+function doSearch(){
+  const q=document.getElementById("searchBox").value.trim();
+  if(q) go("search/"+encodeURIComponent(q));
+}
+
+function render(){
+  const parts=(location.hash.replace(/^#\/?/,"")||"home").split("/");
+  const [page,arg]=[parts[0],decodeURIComponent(parts[1]||"")];
+  const app=document.getElementById("app");
+  clearInterval(window.sliderTimer);
+  if(page==="home") app.innerHTML=homePage(), initSlider();
+  else if(page==="product" && PRODUCTS[arg]) app.innerHTML=productPage(arg);
+  else if(page==="collection" && COLLECTIONS[arg]) app.innerHTML=collectionPage(arg);
+  else if(page==="cart") app.innerHTML=cartPage();
+  else if(page==="checkout") app.innerHTML=checkoutPage();
+  else if(page==="search") app.innerHTML=searchPage(arg);
+  else app.innerHTML=homePage(), initSlider();
+  if(page!=="home") window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",render);
+
+/* ================= PAGES ================= */
+function homePage(){
+  return `
+  <section id="home">
+    <div class="slider">
+      <div class="slides" id="slideContainer">
+        <img src="specil005.png" alt="Banner 1"><img src="specil00333.png" alt="Banner 2"><img src="specil007.png" alt="Banner 3">
+      </div>
+      <button class="btn prev" onclick="changeSlide(-1)">&#10094;</button>
+      <button class="btn next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+  </section>
+
+  <section class="featured" id="products">
+    <h2>Just For You</h2>
+    <div class="product-grid">
+      ${Object.entries(PRODUCTS).map(([id,p])=>`
+        <div class="product" onclick="go('product/${id}')">
+          <img src="${p.home}" alt="${p.name}">
+          <h4>${p.name}</h4><p>Rs.${p.price}</p>
+        </div>`).join("")}
+    </div>
+  </section>
+
+  <section class="collections" id="collections">
+    <h2>Our Collections</h2>
+    <div class="collection-grid">
+      ${COLLECTION_HOME.map(c=>`
+        <div class="collection-card" onclick="go('collection/${c[0]}')"><h3>${c[1]}</h3><p>${c[2]}</p></div>`).join("")}
+    </div>
+  </section>
+
+  <section class="sale">
+    <div class="offer-box">
+      <img src="speciloffer.jpg" alt="Offer">
+      <div class="offer-text">
+        <h2>🔥 Special Resin Sale</h2>
+        <p>Up to 40% OFF on selected handmade resin products</p>
+        <button class="pill" onclick="goSection('products')">Shop Now</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section" id="about">
+    <div class="about-container">
+      <div class="about-text">
+        <h2>Who We Are</h2>
+        <p>At NAVO ZONE, we believe handmade creations tell a story. Our resin products are carefully designed using premium materials to bring beauty, creativity, and uniqueness into your everyday life.<br><br>We specialize in custom resin gifts, jewelry, flower preservations, and aesthetic accessories made with passion and attention to detail.</p>
+        <button class="pill" onclick="goSection('contact')">Learn More</button>
+      </div>
+      <div class="video-box"><video src="resinvideo01.mp4" controls></video></div>
+    </div>
+    <div class="cards">
+      <div class="card"><img src="packaging001.png"><h3>Handmade Resin</h3><p>Unique handmade creations</p></div>
+      <div class="card"><img src="moderndesin.png"><h3>Modern Designs</h3><p>Trendy resin products</p></div>
+      <div class="card"><img src="handmaderesin001.png"><h3>Premium Quality</h3><p>Best quality materials</p></div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <div class="contact-container">
+      <div class="contact-left">
+        <h2>Contact Us</h2>
+        <p>Have questions or custom order ideas? Connect with NAVO ZONE anytime through our social platforms ✨</p>
+        <h3>NAVO ZONE</h3>
+        <p><img src="Phone-Logo-PNG-HD-Image.png" class="icon-img">+94 71 234 5678</p>
+        <p><img src="email-logo-png-transparent-png-logos-28.png" class="icon-img">navozone@gmail.com</p>
+      </div>
+      <div class="contact-right">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/share/18vQjDmtxq/" target="_blank"><img src="icons8-facebook-48 (1).png"></a>
+          <a href="#"><img src="icons8-instagram-48 (1).png"></a>
+          <a href="https://wa.me/${WHATSAPP}" target="_blank"><img src="icons8-whatsapp-48.png"></a>
+          <a href="https://www.tiktok.com/@ashiweerasinghe12?_r=1&_t=ZS-96jS3a4iO6T" target="_blank"><img src="Social-media_Tiktok-1024 (1).png"></a>
+        </div>
+        <div class="payment-small">
+          <h4>Payment Methods</h4>
+          <div class="payment-icons">
+            <div class="payment-card-small"><img src="icons8-cash-on-delivery-64.png"><p>Cash on Delivery</p></div>
+            <div class="payment-card-small"><img src="icons8-visa-48.png"><p>Visa</p></div>
+            <div class="payment-card-small"><img src="mastercard.jpg"><p>MasterCard</p></div>
+            <div class="payment-card-small"><img src="banktransfer.png"><p>Bank Transfer</p></div>
+            <div class="payment-card-small"><img src="kokoopayy.jpeg"><p>Koko Payment</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>`;
+}
+
+function productPage(id){
+  const p=PRODUCTS[id];
+  return `
+  <div class="container">
+    <div class="left-side">
+      <div class="main-image"><img id="bigImage" src="${p.imgs[0]}" alt="${p.name}"></div>
+      <div class="thumbnail-container">
+        ${p.imgs.map((s,i)=>`<div class="thumbnail ${i?'':'active'}" onclick="changeImage(this,'${s}')"><img src="${s}"></div>`).join("")}
+      </div>
+    </div>
+    <div class="product-details">
+      <h1 class="product-title">${p.title}</h1>
+      <h2 class="description">${p.desc}</h2>
+      <div class="rating">★★★★★ (${p.ratings} Ratings)</div>
+      <div class="price">${p.priceText}${p.priceNote?`<p>${p.priceNote}</p>`:""}</div>
+      ${p.oldText?`<div class="old-price">${p.oldText}</div>`:""}
+      <ul class="features">${p.features.map(f=>`<li>✔ ${f}</li>`).join("")}</ul>
+      <div class="buttons">
+        <button class="buy-btn" onclick="buyNow(productAsItem('${id}'))">Buy Now</button>
+        <button class="cart-btn" onclick="addToCart(productAsItem('${id}'),true)">Add to Cart</button>
+      </div>
+    </div>
+  </div>`;
+}
+function changeImage(el,src){
+  document.getElementById("bigImage").src=src;
+  document.querySelectorAll(".thumbnail").forEach(t=>t.classList.remove("active"));
+  el.classList.add("active");
+}
+
+function collectionPage(cid){
+  const c=COLLECTIONS[cid];
+  return `
+  <section class="hero"><h1>${c.title}</h1></section>
+  <section class="products">
+    <h2>${c.sub}</h2>
+    <div class="cgrid">
+      ${c.items.map(it=>`
+        <div class="ccard">
+          <img src="${it.img}" alt="${it.name}">
+          <div class="ccard-content">
+            <h3>${it.name}</h3><p>${it.desc}</p>
+            <div class="cprice">Rs.${it.price}</div>
+            <button class="blue-btn" onclick="buyNow(collectionItem('${cid}','${it.id}'))">Buy Now</button>
+            <button class="blue-btn" style="background:#f57224;margin-top:8px" onclick="addToCart(collectionItem('${cid}','${it.id}'))">Add to Cart</button>
+          </div>
+        </div>`).join("")}
+    </div>
+  </section>`;
+}
+
+function searchPage(q){
+  const res=Object.entries(PRODUCTS).filter(([id,p])=>(p.name+" "+p.title).toLowerCase().includes(q.toLowerCase()));
+  return `<section class="featured"><h2>Search results for "${q.replace(/</g,"&lt;")}"</h2>
+    ${res.length?`<div class="product-grid">${res.map(([id,p])=>`
+      <div class="product" onclick="go('product/${id}')"><img src="${p.home}"><h4>${p.name}</h4><p>Rs.${p.price}</p></div>`).join("")}</div>`
+    :`<p class="empty">No products found.</p>`}</section>`;
+}
+
+/* ---- CART ---- */
+function cartPage(){
+  const sub=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  return `
+  <section class="cart-section"><div class="cart-container">
+    <div class="cart-items">
+      <h2 class="cart-title">Shopping Cart</h2>
+      ${cart.length?cart.map((it,i)=>`
+        <div class="cart-item">
+          <div class="product-info">
+            <img src="${it.img}" alt="${it.name}">
+            <div><h3>${it.name}</h3><p class="product-price">${rs(it.price)}</p></div>
+          </div>
+          <div class="quantity">
+            <button onclick="changeQty(${i},-1)">-</button><span>${it.qty}</span><button onclick="changeQty(${i},1)">+</button>
+          </div>
+          <button class="remove-btn" onclick="removeItem(${i})" title="Remove">🗑</button>
+        </div>`).join(""):`<p class="empty">Your cart is empty.<br><br><button class="pill" onclick="go('home')">Continue Shopping</button></p>`}
+    </div>
+    <div class="cart-summary">
+      <h2>Order Summary</h2>
+      <div class="summary-row"><span>Subtotal</span><span>${rs(sub)}</span></div>
+      <div class="summary-row"><span>Shipping</span><span>${cart.length?rs(DELIVERY_FEE):rs(0)}</span></div>
+      <hr>
+      <div class="summary-row total"><span>Total</span><span>${rs(cart.length?sub+DELIVERY_FEE:0)}</span></div>
+      <button class="checkout-btn" onclick="cartCheckout()">Proceed to Checkout</button>
+      <a class="whatsapp-btn" target="_blank" href="${waLink(cart)}">Order via WhatsApp</a>
+    </div>
+  </div></section>`;
+}
+function changeQty(i,d){ cart[i].qty=Math.max(1,cart[i].qty+d); saveCart(); render(); }
+function removeItem(i){ cart.splice(i,1); saveCart(); render(); }
+function cartCheckout(){ if(!cart.length){toast("Cart is empty");return;} checkoutItems=null; go("checkout"); }
+function waLink(items){
+  let msg="Hello Navo Zone, I want to place an order.";
+  if(items.length){
+    msg+="\n"+items.map(i=>`• ${i.name} x${i.qty} = ${rs(i.price*i.qty)}`).join("\n");
+    msg+=`\nTotal (with delivery): ${rs(items.reduce((s,i)=>s+i.price*i.qty,0)+DELIVERY_FEE)}`;
+  }
+  return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
+}
+
+/* ---- CHECKOUT ---- */
+function currentItems(){ return checkoutItems || cart; }
+function checkoutPage(){
+  const items=currentItems();
+  const sub=items.reduce((s,i)=>s+i.price*i.qty,0);
+  selectedPay=""; selectedType="";
+  return `
+  <div class="checkout-container">
+    <div class="delivery-info">
+      <h2>Delivery Information</h2>
+      <div class="form-row">
+        <div class="form-group"><label>Full Name</label><input id="f_name" type="text" placeholder="Enter your full name"></div>
+        <div class="form-group"><label>Province</label>
+          <select id="f_prov"><option value="">Select Province</option>${PROVINCES.map(x=>`<option>${x}</option>`).join("")}</select></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Phone Number</label><input id="f_phone" type="tel" placeholder="Enter phone number"></div>
+        <div class="form-group"><label>District</label>
+          <select id="f_dist"><option value="">Select District</option>${DISTRICTS.map(x=>`<option>${x}</option>`).join("")}</select></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>City</label><input id="f_city" type="text" placeholder="Enter city"></div>
+        <div class="form-group"><label>Address</label><input id="f_addr" type="text" placeholder="House No / Street"></div>
+      </div>
+      <label>Additional Address Details</label>
+      <textarea id="f_more" placeholder="Enter complete delivery address"></textarea>
+
+      <div class="delivery-label">
+        <h3 style="margin-top:25px">Select Delivery Type</h3>
+        <div class="label-buttons">
+          <button class="label-btn" onclick="pickType(this,'Office')">🏢 OFFICE</button>
+          <button class="label-btn" onclick="pickType(this,'Home')">🏠 HOME</button>
+        </div>
+      </div>
+
+      <div class="payment-method">
+        <h3>Payment Methods</h3>
+        <div class="payment-grid">
+          ${PAYMENTS.map(p=>`<div class="payment-card" onclick="pickPay(this,'${p[0]}')"><img src="${p[1]}"><p>${p[0]}</p></div>`).join("")}
+        </div>
+      </div>
+    </div>
+
+    <div class="order-summary">
+      <h2>Promotion</h2>
+      <div class="promo"><input type="text" placeholder="Enter Promo Code"><button class="apply-btn" onclick="toast('Invalid promo code')">APPLY</button></div>
+      <h2>Order Summary</h2>
+      ${items.map(i=>`<div class="summary-item"><span>${i.name} × ${i.qty}</span><span>${rs(i.price*i.qty)}</span></div>`).join("")}
+      <hr><br>
+      <div class="summary-item"><span>Items Total</span><span>${rs(sub)}</span></div>
+      <div class="summary-item"><span>Delivery Fee</span><span>${rs(DELIVERY_FEE)}</span></div>
+      <hr><br>
+      <div class="summary-item total"><span>Total</span><span>${rs(sub+DELIVERY_FEE)}</span></div>
+      <button class="pay-btn" onclick="placeOrder()">Proceed to Pay</button>
+      <div class="err" id="err"></div>
+    </div>
+  </div>`;
+}
+function pickType(el,v){ selectedType=v; document.querySelectorAll(".label-btn").forEach(b=>b.classList.remove("sel")); el.classList.add("sel"); }
+function pickPay(el,v){ selectedPay=v; document.querySelectorAll(".payment-card").forEach(b=>b.classList.remove("sel")); el.classList.add("sel"); }
+function placeOrder(){
+  const items=currentItems();
+  const g=id=>document.getElementById(id).value.trim();
+  const err=document.getElementById("err");
+  if(!items.length){ err.textContent="Your cart is empty."; return; }
+  if(!g("f_name")||!g("f_phone")||!g("f_prov")||!g("f_dist")||!g("f_city")||!g("f_addr")){ err.textContent="Please fill in all delivery details."; return; }
+  if(!/^[0-9+\s-]{9,15}$/.test(g("f_phone"))){ err.textContent="Please enter a valid phone number."; return; }
+  if(!selectedPay){ err.textContent="Please select a payment method."; return; }
+  const sub=items.reduce((s,i)=>s+i.price*i.qty,0);
+  let msg=`Hello Navo Zone, new order!\n`+items.map(i=>`• ${i.name} x${i.qty} = ${rs(i.price*i.qty)}`).join("\n");
+  msg+=`\nTotal: ${rs(sub+DELIVERY_FEE)} (incl. delivery ${rs(DELIVERY_FEE)})\nPayment: ${selectedPay}\n`;
+  msg+=`Name: ${g("f_name")}\nPhone: ${g("f_phone")}\nAddress: ${g("f_addr")}, ${g("f_city")}, ${g("f_dist")}, ${g("f_prov")} ${selectedType?"("+selectedType+")":""}\n${g("f_more")}`;
+  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,"_blank");
+  if(!checkoutItems){ cart=[]; saveCart(); }
+  checkoutItems=null;
+  document.getElementById("app").innerHTML=`<section class="featured"><h2>🎉 Thank you for your order!</h2><p style="margin-bottom:25px">We will contact you shortly to confirm your order.</p><button class="pill" onclick="go('home')">Back to Home</button></section>`;
+  window.scrollTo(0,0);
+}
+
+/* ---- SLIDER ---- */
+let slideIndex=0;
+function changeSlide(d){
+  slideIndex=(slideIndex+d+3)%3;
+  const c=document.getElementById("slideContainer");
+  if(c) c.style.transform="translateX("+(-slideIndex*33.3333)+"%)";
+}
+function initSlider(){ slideIndex=0; window.sliderTimer=setInterval(()=>changeSlide(1),4000); }
+
+/* ---- SIGNUP ---- */
+function openSignup(){ document.getElementById("signupBox").style.display="flex"; }
+function closeSignup(){ document.getElementById("signupBox").style.display="none"; }
+
+/* ---- START ---- */
+updateBadge();
+render();
+</script>
+</body>
+</html>
